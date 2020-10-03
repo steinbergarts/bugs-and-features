@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
+
 {
     public float speed = 5f;
     private float movement = 0f;
@@ -14,10 +15,9 @@ public class PlayerControl : MonoBehaviour
     public LayerMask groundLayer;
     private bool isTouchingGround;
 
-    public GameObject Button; 
-    public GameObject Win;
-    public GameObject Suicide;
-  
+    public GameObject Button; //кнопка перезапуску
+
+    
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -26,9 +26,8 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         isTouchingGround = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
-        movement = Input.GetAxis ("Horizontal"); 
+        movement = Input.GetAxis ("Horizontal"); //
 
         if(movement > 0f){
             rigidBody.velocity = new Vector2(movement*speed, rigidBody.velocity.y);
@@ -42,29 +41,17 @@ public class PlayerControl : MonoBehaviour
         if(Input.GetButtonDown ("Jump") && isTouchingGround == true){
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
         }
-        
+          
     }
-        private void OnCollisionEnter2D(Collision2D collision) //Кнопка перезапуску
+
+      private void OnCollisionEnter2D(Collision2D collision) //Кнопка перезапуску
     {
-            if (collision.collider.tag == "Enemy")
-            {
+        if (collision.collider.tag == "Enemy")
+        {
             Destroy(gameObject);
             Time.timeScale = 0;
             Button.SetActive(true);
-            }
-            else if (collision.collider.tag == "Win")
-            {
-            Destroy(gameObject);
-            Time.timeScale = 0;
-            Win.SetActive(true);
-            }
-            else if (collision.collider.tag == "Suicide")
-            {
-            Destroy(gameObject);
-            Time.timeScale = 0;
-            Suicide.SetActive(true);
-            }
-        
-
+        }
     }
 }
+
