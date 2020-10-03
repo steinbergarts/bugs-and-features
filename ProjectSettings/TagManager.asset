@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
   - Score
+  - Enemy
+  - Win
+  - Suicide
   layers:
   - Default
   - TransparentFX
@@ -40,15 +42,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackBack
+    uniqueID: 3189897869
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 3821648033
+  - name: Back
+    uniqueID: 1018542621
     locked: 0
   - name: Middle
-    uniqueID: 16849813
+    uniqueID: 2750060925
     locked: 0
-  - name: Foreground
-    uniqueID: 3287661435
+  - name: Front
+    uniqueID: 1789544539
     locked: 0
